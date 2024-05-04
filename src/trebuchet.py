@@ -53,8 +53,8 @@ def find(string: str) -> int:
     return int(f"{f}{l}")
 
 
-def trebuchet():
-    with open("texts/trebuchet.txt") as file:
+def trebuchet(source_file: str):
+    with open(source_file) as file:
         count = 0
         for line in file:
             count += find(line)
@@ -63,7 +63,4 @@ def trebuchet():
 
 
 if __name__ == "__main__":
-    trebuchet()
-
-    # print(find("nineeightseven"))
-    # print(find("abcone2threexyz"))
+    trebuchet("../texts/trebuchet.txt")
