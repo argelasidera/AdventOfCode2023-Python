@@ -50,7 +50,8 @@ def cube_conundrum(source_file: str):
             if possible:
                 possible_count += int(game_no_str.replace("Game", ""))
 
-        print("ans:", possible_count)
+        print(possible_count)
+        return possible_count
 
 
 if __name__ == "__main__":

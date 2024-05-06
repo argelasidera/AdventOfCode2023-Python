@@ -1,2 +1,0 @@
-from part1 import cube_conundrum as cube_conundrum_part1
-from part2 import cube_conundrum as cube_conundrum_part2

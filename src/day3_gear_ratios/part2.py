@@ -43,6 +43,9 @@ class ComputeGearRatio:
         self.w = w
 
     def find_part_number(self, curr_node: Node):
+        total_num = 0
+        adjacent_count = 0
+
         for poss_node in self.neighbor_paths:
             next_node = Node(curr_node.r + poss_node.r, curr_node.c + poss_node.c)
 
@@ -51,9 +54,15 @@ class ComputeGearRatio:
 
                 if not self.visited[next_node.r][next_node.c] and s.isdigit():
                     self.visited[next_node.r][next_node.c] = True
-                    self.combine_number(next_node, s)
+                    num = self.combine_number(next_node, s)
 
-    def combine_number(self, node: Node, num_str: str):
+                    total_num = total_num * num if total_num != 0 else num
+                    adjacent_count += 1
+
+        if adjacent_count > 1:
+            self.ans += total_num
+
+    def combine_number(self, node: Node, num_str: str) -> int:
         stack = [node]
 
         while stack:
@@ -70,25 +79,11 @@ class ComputeGearRatio:
                         stack.append(next_node)
                         num_str = f"{num_str}{s}" if path == "right" else f"{s}{num_str}"
 
-        self.ans += int(num_str)
+        return int(num_str)
 
 
 def gear_ratios(source_file: str):
     with open(source_file) as file:
-        not_symbols = {
-            ".": True,
-            "1": True,
-            "2": True,
-            "3": True,
-            "4": True,
-            "5": True,
-            "6": True,
-            "7": True,
-            "8": True,
-            "9": True,
-            "0": True,
-        }
-
         grid = []
         visited = []
 
@@ -114,10 +109,11 @@ def gear_ratios(source_file: str):
 
         for i in range(len(grid)):
             for j in range(len(grid[i])):
-                if grid[i][j] not in not_symbols:
+                if grid[i][j] == "*":
                     gr.find_part_number(Node(i, j))
 
-        print("ans:", gr.ans)
+        print(gr.ans)
+        return gr.ans
 
 
 if __name__ == "__main__":

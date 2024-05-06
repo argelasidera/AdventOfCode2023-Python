@@ -29,6 +29,7 @@ def trebuchet(source_file: str):
             count += find(line)
 
     print(count)
+    return count
 
 
 if __name__ == "__main__":

@@ -47,7 +47,8 @@ def cube_conundrum(source_file: str):
             arr_nums_colors = re.split("; |, ", each_sets)
             total_count += power_of_cube_sets(arr_nums_colors)
 
-        print("ans:", total_count)
+        print(total_count)
+        return total_count
 
 
 if __name__ == "__main__":
