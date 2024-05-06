@@ -63,4 +63,4 @@ def trebuchet(source_file: str):
 
 
 if __name__ == "__main__":
-    trebuchet("../texts/trebuchet.txt")
+    trebuchet("text.txt")

@@ -40,27 +40,18 @@ def power_of_cube_sets(arr: List[str]) -> int:
 
 def cube_conundrum(source_file: str):
     with open(source_file) as file:
-        # Day 2 prob: 1
-        # possible_count = 0
-
-        total_count = 0
+        possible_count = 0
 
         for line in file:
             game_no_str, each_sets = line.split(": ")
-
             arr_nums_colors = re.split("; |, ", each_sets)
+            possible = check_if_possible(arr_nums_colors)
 
-            total_count += power_of_cube_sets(arr_nums_colors)
+            if possible:
+                possible_count += int(game_no_str.replace("Game", ""))
 
-            # Day 2 prob: 1
-            # possible = check_if_possible(arr_nums_colors)
-            # if possible:
-            #     possible_count += int(game_no_str.replace("Game", ""))
-            #
-            # print(possible_count)
-
-        print(total_count)
+        print("ans:", possible_count)
 
 
 if __name__ == "__main__":
-    cube_conundrum("texts/cube_conundrum.txt")
+    cube_conundrum("text.txt")
