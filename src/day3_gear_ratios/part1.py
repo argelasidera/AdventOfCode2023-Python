@@ -92,23 +92,20 @@ def gear_ratios(source_file: str):
         grid = []
         visited = []
 
-        h = 0
-        w = 0
-
         for line in file:
             grid_row = []
             visited_row = []
-            h += 1
 
             for i in line.strip():
                 grid_row.append(i)
                 visited_row.append(False)
 
-                if h == 1:
-                    w += 1
             else:
                 grid.append(grid_row)
                 visited.append(visited_row)
+
+        h = len(grid)
+        w = len(grid[0])
 
         gr = ComputeGearRatio(grid, visited, h, w)
 
