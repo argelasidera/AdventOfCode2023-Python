@@ -87,9 +87,6 @@ def gear_ratios(source_file: str):
         grid = []
         visited = []
 
-        h = 0
-        w = 0
-
         for line in file:
             grid_row = []
             visited_row = []
